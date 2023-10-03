@@ -1,4 +1,4 @@
-Package: RankCorr
+Package: rankCorr
 Type: Package
 Title: Total, Between-, and Within-cluster Spearman's Rank Correlation for Clustered Data 
 Version: 1.0.1
