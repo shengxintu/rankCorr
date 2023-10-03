@@ -51,7 +51,7 @@ a list with following components.
   \tab \cr
   \code{'Approx-based between'} \tab the between-cluster Spearman's rank correlation estimated via the approximation-based method, including the estimate (\code{Estimate}), the standard error (\code{SE}), the lower and upper bound of the confidence interval (\code{Lower, Upper}).\cr
   \tab \cr
-  \code{'Rank ICC'} \tab the rank intraclass correlation coefficients of \code{x} and \code{y} \cr
+  \code{'Rank ICC'} \tab the rank intraclass correlation coefficients of \code{x} and \code{y}. It would be presented in the output if \code{'Approx-based between'} is used. \cr
 }
 }
 \description{
@@ -59,7 +59,7 @@ a list with following components.
 }
 \details{
 The weighting method \code{"obs"} assigns equal weights to observations; \eqn{w_{ij} = 1/N}, where \var{N} is the total number of observations. The weighting method \code{"clusters"} assigns equal weights to clusters; \eqn{w_{ij} = 1/(nk_i)}, where \var{n} is the total number of clusters and k_i is the cluster size.
-The estimation method \code{"Cluster-median-based"} estimates the between-cluster correlation using the coefficients from the cumulative probability models of x and y on cluster index. The estimation method \code{"Approx-based"} estimates the between-cluster correlation using the approximated linear relationship between the total, between-, and within-cluster correlations.
+The estimation method \code{"Cluster-median-based"} estimates the between-cluster Spearman's rank correlation using the coefficients from the cumulative probability models of \code{x} and \code{y} on cluster index \code{cluster}. The estimation method \code{"Approx-based"} estimates the between-cluster Spearman's rank correlation using the approximated linear relationship between the total, between-, and within-cluster Spearman's rank correlations.
 }
 \examples{
 if(!('mvtnorm' \%in\% installed.packages()[,"Package"])) install.packages('mvtnorm')
@@ -85,7 +85,7 @@ weights = "clusters")
 }
 \references{
 \tabular{ll}{
-Tu S, Li C, Shepherd BE (2023) Between- and within-cluster Spearman's rank correlation for clustered data. \cr
+Tu S, Li C, Shepherd BE (2023) Between- and within-cluster Spearman's rank correlations for clustered data. \cr
 Tu, S, Li, C, Zeng, D, Shepherd, BE. Rank intraclass correlation for clustered data. Statistics in Medicine. 2023; 1-16. doi: 10.1002/sim.9864 \cr
 }
 }
