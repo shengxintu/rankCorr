@@ -20,5 +20,5 @@ Imports:
   rms (>= 6.3.0), 
   rankICC (>= 1.0.1)
 Suggests: mvtnorm (>= 1.1.3)
-Collate: 'rankCorr.R' 'internal_functions.R' 
+Collate: 'rankCorrCluster.R' 'rcc_internal_functions.R' 
 RoxygenNote: 7.2.3
