@@ -336,7 +336,7 @@ cor_rb_approx <- function(x, y, cluster, rw, rt, weights,
   else rb.approx <- (rt - sqrt((1-irx[1])*(1-iry[1])) * rw)/sqrt(irx[1]*iry[1])
   rb.approx.est <- c(rb.approx, rep(NA, 3))
   names(rb.approx.est) <- c("Estimate", "SE", "Lower", "Upper")
-  rankicc <- c("x" = irx[1], "y" = iry[1])
+  rankicc <- c("x" = unname(irx[1]), "y" = unname(iry[1]))
   if(conf.int){
     rb.approx.est[c("Lower", "Upper")] <- getCI(ts = rb.approx, v = rb['SE']^2, fisher = fisher, ci = conf.int)
     rb.approx.est["SE"] <- rb['SE']

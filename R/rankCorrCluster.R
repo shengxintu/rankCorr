@@ -60,12 +60,12 @@
 #' @importFrom rms orm
 
 rankCorrCluster <- function(x, y, cluster,
-                     link.x = c("probit", "logistic", "cauchit", "loglog", "cloglog"),
-                     link.y = c("probit", "logistic", "cauchit", "loglog", "cloglog"),
-                     weights = c("obs", "clusters"),
-                     methods_between_corr = c("cluster-median", "approx", "both"),
-                     conf.int = 0.95, fisher = FALSE,
-                     na.rm = FALSE){
+                            link.x = c("probit", "logistic", "cauchit", "loglog", "cloglog"),
+                            link.y = c("probit", "logistic", "cauchit", "loglog", "cloglog"),
+                            weights = c("obs", "clusters"),
+                            methods_between_corr = c("cluster-median", "approx", "both"),
+                            conf.int = 0.95, fisher = FALSE,
+                            na.rm = FALSE){
   if((!is.numeric(x) & !is.factor(x)) | (!is.numeric(y) & !is.factor(y))) stop("x and y must be a numeric or factor vector!")
   else if((length(cluster) != length(x)) | length(cluster) != length(y)) stop("lengths of x, y and cluster must be the same!")
   if(!methods_between_corr[1] %in% c("cluster-median", "approx", "both")) stop(stop("a wrong estimation method name for the between correlation entered!"))
@@ -124,13 +124,13 @@ rankCorrCluster <- function(x, y, cluster,
       wi <- 1 / n.cluster
     }
     rw <- cor_rw(score.x$presid, score.y$presid,
-                       score.x$psi, score.y$psi,
-                       score.x$dpsi.dtheta, score.y$dpsi.dtheta,
-                       score.x$dpresid.dtheta, score.y$dpresid.dtheta,
-                       cluster, wi, wij, conf.int, fisher)
+                 score.x$psi, score.y$psi,
+                 score.x$dpsi.dtheta, score.y$dpsi.dtheta,
+                 score.x$dpresid.dtheta, score.y$dpresid.dtheta,
+                 cluster, wi, wij, conf.int, fisher)
   }
 
-#########Between-cluster correlation
+  #########Between-cluster correlation
   if(weights[1] == "obs"){
     wij <- 1 / n.obs
     wi <- ki / n.obs
@@ -142,12 +142,12 @@ rankCorrCluster <- function(x, y, cluster,
   rb <- cor_rb(score.x$beta, score.y$beta, score.x$psi, score.y$psi,
                score.x$dpsi.dtheta, score.y$dpsi.dtheta, wi, conf.int, fisher)
 
-########Total correlation
+  ########Total correlation
   rt <- cor_rt(x, y, cluster, wij, conf.int, fisher)
 
   ans <- list("Total" = rt, 'Within' = rw)
 
-########Approximation-based between-cluster correlation
+  ########Approximation-based between-cluster correlation
   if(methods_between_corr[1] != "cluster-median"){
     if(sum(ki == 1)){
       rb.approx <- cor_rb_approx(x[idx.new], y[idx.new], cluster.new, rw['Estimate'], rt['Estimate'],
@@ -156,7 +156,7 @@ rankCorrCluster <- function(x, y, cluster,
     else rb.approx <- cor_rb_approx(x, y, cluster, rw['Estimate'], rt['Estimate'],
                                     weights, conf.int, fisher, rb)
     ans[['Between']][['approx']] <- rb.approx$rb.approx.est
-    ans[['Rank ICC']] <- rb.approx$rankicc
+    ans[['Rank ICC']] <- c(rb.approx$rankicc)
   }
   if(methods_between_corr[1] != 'approx') ans[['Between']][['cluster-median']] <- rb
 
