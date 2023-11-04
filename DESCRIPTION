@@ -1,6 +1,6 @@
 Package: rankCorr
 Type: Package
-Title: Total, Between-, and Within-cluster Spearman's Rank Correlation for Clustered Data 
+Title: Total, Between-, and Within-cluster Spearman's Rank Correlations for Clustered Data 
 Version: 1.0.1
 Date: 2023-10-02
 Authors@R: c(person(given = "Shengxin",
@@ -13,7 +13,7 @@ Authors@R: c(person(given = "Shengxin",
              person(given = "Bryan",
                     family = "Shepherd",
                     role = "aut"))
-Description: Estimates the total, between-, and within-cluster Spearman's rank correlation between two variables with clustered data. 
+Description: Estimates the total, between-, and within-cluster Spearman's rank correlations between two variables with clustered data. 
 License: GPL (>= 2)
 Encoding: UTF-8
 Imports: 
