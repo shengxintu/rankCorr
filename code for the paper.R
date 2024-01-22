@@ -1,4 +1,4 @@
-########Code for Between- and Within-Cluster Spearman rank correlations
+########Code for the applications and simulations sections in the paper of Between- and Within-Cluster Spearman rank correlations
 ##Application 
 #CD4 and CD8 data
 demo.d <- read.csv("cd4cd8rat_pts_04jun2015.csv")
